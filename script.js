@@ -1,3 +1,7 @@
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./service-worker.js');
+}
+
 // --- データ定義 ---
 const characters = {
     power: { name: "ルナリア", img: "images/lunaria.png", faces: ["40ダメ", "30ダメ", "ミス", "30ダメ", "20ダメ", "ミス"] },
