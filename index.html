@@ -1,1 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>まゐの鉛筆バトル！</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- 0. タイトル画面 -->
+        <div id="title-screen">
+            <div class="title-background">
+                <h1 class="main-title-logo">まゐの鉛筆バトル！</h1>
+                <button class="start-btn" onclick="showSelect()">GAME START</button>
+                <button class="rule-btn" onclick="showRules()">遊び方</button>
+            </div>
+        </div>
 
+        <!-- カットイン演出 -->
+        <div id="cutin-layer" style="display:none;">
+            <div class="cutin-bg"></div>
+            <img id="cutin-img" src="">
+            <div id="cutin-name"></div>
+        </div>
+
+        <!-- 1. セレクト画面 -->
+        <div id="select-screen" style="display:none;">
+            <button class="back-to-title" onclick="location.reload()">◀ タイトルへ</button>
+            <h1 class="title-logo">タイプをえらんでね！</h1>
+            <div class="character-list">
+                <div class="char-card lunaria" onclick="startGame('power')">
+                    <img src="images/lunaria.png" class="select-img">
+                    <div class="char-info">
+                        <span class="catch-copy">― 不屈の聖騎士 ―</span>
+                        <h3>女騎士ルナリア</h3>
+                        <div class="status-stars">攻撃：★★★★★<br>回復：☆☆☆☆☆ (不可)</div>
+                    </div>
+                </div>
+                <div class="char-card marie" onclick="startGame('heal')">
+                    <img src="images/marie.png" class="select-img">
+                    <div class="char-info">
+                        <span class="catch-copy">― 魅惑の吸血姫 ―</span>
+                        <h3>サキュバスマリー</h3>
+                        <div class="status-stars">攻撃：★★☆☆☆<br>回復：★★★★★</div>
+                    </div>
+                </div>
+                <div class="char-card yuki" onclick="startGame('balance')">
+                    <img src="images/yuki.png" class="select-img">
+                    <div class="char-info">
+                        <span class="catch-copy">― 万能の演算機 ―</span>
+                        <h3>アンドロイドユキ</h3>
+                        <div class="status-stars">攻撃：★★★☆☆<br>回復：★★★☆☆</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. バトル画面 -->
+        <div id="battle-screen" style="display:none;">
+            <div class="hp-area">
+                <div class="hp-group">
+                    <span id="enemy-name-label" class="name-label">敵</span>
+                    <div class="hp-gauge-bg"><div id="enemy-hp-bar" class="hp-gauge-fill" style="width:100%;"></div></div>
+                </div>
+                <div class="hp-group">
+                    <span id="player-name-label" class="name-label">あなた</span>
+                    <div class="hp-gauge-bg"><div id="player-hp-bar" class="hp-gauge-fill" style="width:100%;"></div></div>
+                </div>
+            </div>
+
+            <div class="arena">
+                <div id="enemy-sprite" class="sprite"><img id="enemy-img" src=""><div id="enemy-popup" class="popup-container"></div></div>
+                <div id="player-sprite" class="sprite"><img id="player-img" src=""><div id="player-popup" class="popup-container"></div></div>
+            </div>
+
+            <div id="dice-area">
+                <div id="pencil" class="pencil-style">？</div>
+                <button id="roll-button" onclick="rollPencil()">えんぴつを振る！</button>
+                <div id="retry-area" style="display:none;"></div>
+                <div id="log-container">
+                    <p id="log-text">バトル開始！</p>
+                    <div id="log-history"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
