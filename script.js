@@ -291,5 +291,3 @@ function createParticles() {
         setTimeout(() => p.remove(), 1200);
     }
 }
-}
-}
